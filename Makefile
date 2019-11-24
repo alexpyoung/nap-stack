@@ -21,6 +21,9 @@ build: ## Compile the application
 serve: build ## Create server runtime
 	node dist/index.js
 
+watch:
+	tsc --watch
+
 migration: ## Create migration file
 	knex --knexfile src/database/knexfile.ts migrate:make $(name) -x ts
 
