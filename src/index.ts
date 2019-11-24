@@ -10,6 +10,11 @@ const typeDefs = gql`
         users: [User]!
     }
 
+    type Mutation {
+      createUser: User!
+      deleteUser(id: String!): String!
+    }
+
     type User {
       id: String!
     }

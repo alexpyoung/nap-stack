@@ -1,5 +1,5 @@
 export const Query = {
-  async users(_parent: any, _args: any, context: any) {
-    return context.dataSources.db.getUsers();
+  async users(_parent: any, { ids }: any, context: any) {
+    return context.dataSources.db.getUsers(ids);
   },
 };
