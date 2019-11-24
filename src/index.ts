@@ -6,18 +6,18 @@ import resolvers from './graphql/resolvers';
 const db = new Database(config);
 
 const typeDefs = gql`
-    type Query {
-        users: [User]!
-    }
+  type Query {
+    users: [User]!
+  }
 
-    type Mutation {
-      createUser: User!
-      deleteUser(id: String!): String!
-    }
+  type Mutation {
+    createUser: User!
+    deleteUser(id: String!): String!
+  }
 
-    type User {
-      id: String!
-    }
+  type User {
+    id: String!
+  }
 `;
 
 const server = new ApolloServer({

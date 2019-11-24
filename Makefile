@@ -24,6 +24,9 @@ serve: build ## Create server runtime
 watch:
 	tsc --watch
 
+lint:
+	eslint --fix "src/*"
+
 migration: ## Create migration file
 	knex --knexfile src/database/knexfile.ts migrate:make $(name) -x ts
 
