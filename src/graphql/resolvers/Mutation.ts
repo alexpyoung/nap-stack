@@ -1,6 +1,6 @@
 export const Mutation = {
-  async createUser(_parent: any, _args: any, { dataSources }: any) {
-    const [id] = await dataSources.db.createUser();
+  async createUser(_parent: any, { email, password }: any, { dataSources }: any) {
+    const [id] = await dataSources.db.createUser(email, password);
     const [user] = await dataSources.db.getUsers([id]);
     return user;
   },

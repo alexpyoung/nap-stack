@@ -15,11 +15,11 @@ export default class Database extends SQLDataSource {
       .cache();
   }
 
-  public async createUser() {
+  public async createUser(email: string, password: string) {
     return this.db
       .table('users')
       .returning('id')
-      .insert({ id: uuid() });
+      .insert({ id: uuid(), email, password });
   }
 
   public async deleteUser(id: string) {

@@ -13,12 +13,13 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createUser: User!
+    createUser(email: String!, password: String!): User!
     deleteUser(id: UUID!): UUID!
   }
 
   type User {
     id: UUID!
+    email: String!
   }
 `;
 
