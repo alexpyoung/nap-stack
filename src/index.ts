@@ -6,17 +6,19 @@ import resolvers from './graphql/resolvers';
 const db = new Database(config);
 
 const typeDefs = gql`
+  scalar UUID
+
   type Query {
     users: [User]!
   }
 
   type Mutation {
     createUser: User!
-    deleteUser(id: String!): String!
+    deleteUser(id: UUID!): UUID!
   }
 
   type User {
-    id: String!
+    id: UUID!
   }
 `;
 
