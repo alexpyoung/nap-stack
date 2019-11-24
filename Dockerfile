@@ -6,5 +6,7 @@ COPY . .
 
 EXPOSE 4000
 
+RUN make install
+
 CMD ["make", "serve"]
 

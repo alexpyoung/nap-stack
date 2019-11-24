@@ -14,9 +14,21 @@ clean: ## Remove dependencies and build artifacts
 install: ## Install dependencies
 	yarn install
 
-build: install ## Compile the application
+build: ## Compile the application
+	rm -rf dist
 	tsc
 
 serve: build ## Create server runtime
 	node dist/index.js
 
+migration: ## Create migration file
+	knex --knexfile src/database/knexfile.ts migrate:make $(name) -x ts
+
+migrate: build ## Apply all new migrations
+	knex --knexfile dist/database/knexfile.js migrate:latest
+
+rollback: build ## Apply all new migrations
+	knex --knexfile dist/database/knexfile.js migrate:rollback
+
+psql: ## Open a local Postgres shell
+	psql -h localhost -p 5432 -U postgres
