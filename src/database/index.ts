@@ -28,4 +28,18 @@ export default class Database extends SQLDataSource {
       .where('id', id)
       .del();
   }
+
+  public async authenticate(email: string, actual: string) {
+    const [{
+      id,
+      password: expected,
+    }] = await this.db
+      .table('users')
+      .returning('id', 'password')
+      .where('email', email);
+    if (actual === expected) {
+      return id;
+    }
+    return null;
+  }
 }

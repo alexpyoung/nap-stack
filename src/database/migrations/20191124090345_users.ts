@@ -4,9 +4,8 @@ export async function up(knex: Knex): Promise<any> {
   return knex.schema
     .createTableIfNotExists('users', table => {
       table.uuid('id').primary().unique().index();
-      table.string('email').unique().notNullable();
+      table.string('email').unique().notNullable().index();
       table.string('password').notNullable();
-      table.text('jwt').unique().index();
     });
 }
 
