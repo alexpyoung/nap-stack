@@ -1,12 +1,12 @@
 export const development = {
-  client: "postgresql",
+  client: 'postgresql',
   connection: {
-    database: "postgres",
-    user: "postgres",
-    host: "database",
+    database: 'postgres',
+    user: 'postgres',
+    host: 'database',
   },
   migrations: {
-    directory: "./migrations",
-    tableName: "migrations",
+    directory: './migrations',
+    tableName: 'migrations',
   }
 };

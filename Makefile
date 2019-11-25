@@ -25,7 +25,7 @@ watch:
 	tsc --watch
 
 lint:
-	eslint --fix "src/*"
+	eslint --fix "src/**/*.ts"
 
 migration: ## Create migration file
 	knex --knexfile src/database/knexfile.ts migrate:make $(name) -x ts

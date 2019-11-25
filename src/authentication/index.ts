@@ -19,5 +19,5 @@ export async function verifyToken(token: string): Promise<string> {
       // @ts-ignore
       resolve(decoded.id);
     });
-  })
+  });
 }

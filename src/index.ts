@@ -1,5 +1,5 @@
 import { ApolloServer, gql } from 'apollo-server';
-import jwt from 'jsonwebtoken';
+import { DataSources as ApolloSources } from 'apollo-server-core/dist/graphqlOptions';
 
 import Database from './database';
 import { development as config } from './database/knexfile';
@@ -29,10 +29,18 @@ const typeDefs = gql`
   }
 `;
 
+export interface Context {
+  userId?: string;
+}
+
+export interface DataSources extends ApolloSources<any> {
+  db: Database;
+}
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: async ({ req }) => {
+  context: async ({ req }): Promise<Context> => {
     const [, token] = (req.headers.authorization || '').split(' ');
     if (token) {
       const userId = await verifyToken(token);
@@ -40,8 +48,7 @@ const server = new ApolloServer({
     }
     return {};
   },
-  // @ts-ignore
-  dataSources: () => ({ db }),
+  dataSources: (): DataSources => ({ db }),
 });
 
 server.listen().then(({ url }: { url: string }) => {
