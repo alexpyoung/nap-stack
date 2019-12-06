@@ -5,6 +5,9 @@ services:
     build: .
     ports:
       - "4000:4000"
+    volumes:
+      - ./:/opt/app
+    command: make watch
   database:
     image: postgres:12.1
     ports:
