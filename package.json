@@ -4,7 +4,7 @@
   "description": "Node.js, Apollo, PostgreSQL",
   "dependencies": {
     "apollo-server": "^3.12.0",
-    "datasource-sql": "^1.0.2",
+    "datasource-sql": "^2.0.1",
     "graphql": "^14.5.8",
     "jsonwebtoken": "^9.0.0",
     "knex": "^2.4.0",
